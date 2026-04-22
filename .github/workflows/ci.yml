@@ -1,6 +1,5 @@
 name: Validly CI
 
-# Kapan workflow ini dijalankan
 on:
   push:
     branches: [ main, develop ]   # setiap push ke main atau develop
@@ -23,7 +22,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
           MYSQL_DATABASE: validly_testing
         ports:
           - 3306:3306
