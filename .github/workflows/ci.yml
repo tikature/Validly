@@ -43,7 +43,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, pdo, pdo_mysql, bcmath, xml, ctype, fileinfo
-          coverage: none
+          coverage: xdebug
 
       # ── 3. Cache Composer dependencies ───────────────────────────
       - name: Cache Composer packages
@@ -89,7 +89,7 @@ jobs:
 
       # ── 8. Jalankan semua test ────────────────────────────────────
       - name: Run tests
-        run: php artisan test --parallel
+        run: php artisan test --parallel --coverage --min=70
         env:
           DB_CONNECTION: mysql
           DB_HOST: 127.0.0.1
@@ -97,4 +97,3 @@ jobs:
           DB_DATABASE: validly_testing
           DB_USERNAME: root
           DB_PASSWORD: ''
-          
